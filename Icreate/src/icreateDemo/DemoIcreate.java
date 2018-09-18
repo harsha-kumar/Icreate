@@ -1,11 +1,19 @@
 package icreateDemo;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -40,13 +48,16 @@ public class DemoIcreate {
 				log=report.startTest("Icreate Login");
 				driver.get("http://192.168.2.126/login");
 				log.log(LogStatus.PASS, "Url loaded successfully", "Url");
+				Thread.sleep(5000);
+				WaitForElementToDisplay(By.xpath("//input[@placeholder='Enter username']"), "place holder");
+				driver.findElement(By.xpath("//input[@placeholder='Enter username']")).sendKeys("FTO_author4");
+				Thread.sleep(1000);
+				WaitForElementToDisplay(By.xpath("//input[@placeholder='Enter password']"), "place holder");
+				driver.findElement(By.xpath("//input[@placeholder='Enter password']")).sendKeys("FTO_author4");
+				Thread.sleep(1000);
+				WaitForElementToDisplay(By.xpath("//button[@type='submit']"), "place holder");
+				driver.findElement(By.xpath("//button[@type='submit']")).click();
 				Thread.sleep(10000);
-//				driver.findElement(By.xpath("//input[@placeholder='Enter username']")).sendKeys("FTO_author4");
-//				Thread.sleep(1000);
-//				driver.findElement(By.xpath("//input[@placeholder='Enter password']")).sendKeys("FTO_author4");
-//				Thread.sleep(1000);
-//				driver.findElement(By.xpath("//button[@type='submit']")).click();
-//				Thread.sleep(10000);
 				log.log(LogStatus.PASS, "User logged in successfully","User logged in");
 				report.endTest(log);
 				report.flush();
@@ -63,5 +74,40 @@ public class DemoIcreate {
 		
 		
 	}
+	
+	public static boolean WaitForElementToDisplay (By elementQuery , String strElementName ) throws Exception
+	{
+	
+		int  Time =60;
+		boolean  Status =false;
+	try
+	{
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		FluentWait<WebDriver> pWait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Time, TimeUnit.SECONDS)
+				.pollingEvery(250, TimeUnit.MILLISECONDS)
+				.ignoring(NoSuchElementException.class, StaleElementReferenceException.class)
+				.ignoring(WebDriverException.class);
+		pWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementQuery));
+		Status =true;
+		//FrameworkFunctions.screenShot(strElementName);
+		
+	}
+	catch (TimeoutException e) {
+		
+				
+	}
+	catch (NoSuchWindowException eW) {
+		log.log(LogStatus.FAIL, "Browser closed during Execution ",	 eW.getMessage());
+	}
+	if(Status){
+		log.log(LogStatus.PASS, strElementName +"</b> validation and </b>" +   strElementName + " is present ");
+	}
+	else{
+		log.log(LogStatus.FAIL, strElementName +" </b> validation and </b>" + strElementName+ "<b> is not present </b>");
+	}
+	return Status;
+	}
+
 
 }
