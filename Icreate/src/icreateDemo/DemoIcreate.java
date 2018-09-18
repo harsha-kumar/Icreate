@@ -5,6 +5,8 @@ import java.io.File;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -28,7 +30,9 @@ public class DemoIcreate {
 				report=new ExtentReports("/var/lib/jenkins/workspace/DemoICreate/Icreate/icreate.html", true, NetworkMode.ONLINE);
 				report.loadConfig(new File("/var/lib/jenkins/workspace/DemoICreate/Icreate/extent-config.xml"));
 				System.setProperty("webdriver.chrome.driver","/var/lib/jenkins/workspace/DemoICreate/Icreate/headless/chromedriver");
-				driver=new ChromeDriver();
+				ChromeOptions chromeOptions = new ChromeOptions();
+			    chromeOptions.addArguments("--headless");
+			    ChromeDriver driver = new ChromeDriver(chromeOptions);
 				System.out.println("Chrome is Selected");	
 				driver.manage().window().maximize();
 				log=report.startTest("Icreate Login");
