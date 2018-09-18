@@ -32,9 +32,11 @@ public class DemoIcreate {
 				System.setProperty("webdriver.chrome.driver","/var/lib/jenkins/workspace/DemoICreate/Icreate/headless/chromedriver");
 				ChromeOptions chromeOptions = new ChromeOptions();
 			    chromeOptions.addArguments("--headless");
+			    chromeOptions.addArguments("--no-sandbox");
+			    chromeOptions.addArguments("window-size=1200x600");
 			    ChromeDriver driver = new ChromeDriver(chromeOptions);
 				System.out.println("Chrome is Selected");	
-				driver.manage().window().maximize();
+				//driver.manage().window().maximize();
 				log=report.startTest("Icreate Login");
 				driver.get("http://192.168.2.126/login");
 				log.log(LogStatus.PASS, "Url loaded successfully", "Url");
