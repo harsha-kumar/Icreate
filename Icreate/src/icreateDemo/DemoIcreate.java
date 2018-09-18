@@ -37,12 +37,12 @@ public class DemoIcreate {
 				System.out.println("------------------Its a MAIN Class---------------------");
 				report=new ExtentReports(path+"//icreate.html", true, NetworkMode.ONLINE);
 				report.loadConfig(new File(path+"//extent-config.xml"));
-				System.setProperty("webdriver.chrome.driver",path+"//headless/chromedriver.exe");
-//				ChromeOptions chromeOptions = new ChromeOptions();
-//			    chromeOptions.addArguments("--headless");
-//			    chromeOptions.addArguments("--no-sandbox");
-//			    chromeOptions.addArguments("window-size=1200x600");
-			    driver = new ChromeDriver();
+				System.setProperty("webdriver.chrome.driver",path+"/headless/chromedriver.exe");
+				ChromeOptions chromeOptions = new ChromeOptions();
+			    chromeOptions.addArguments("--headless");
+			    chromeOptions.addArguments("--no-sandbox");
+			    chromeOptions.addArguments("window-size=1200x600");
+			    driver = new ChromeDriver(chromeOptions);
 				System.out.println("Chrome is Selected");	
 				//driver.manage().window().maximize();
 				log=report.startTest("Icreate Login");
