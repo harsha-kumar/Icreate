@@ -55,8 +55,8 @@ public class DemoIcreate {
 				WaitForElementToDisplay(By.xpath("//input[@placeholder='Password']"), "place holder");
 				driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("welcome");
 				Thread.sleep(1000);
-				WaitForElementToDisplay(By.xpath("//button[@type='submit']"), "place holder");
-				driver.findElement(By.xpath("//button[@type='submit']")).click();
+				WaitForElementToDisplay(By.xpath("//input[@type='submit']"), "place holder");
+				driver.findElement(By.xpath("//input[@type='submit']")).click();
 				Thread.sleep(10000);
 				log.log(LogStatus.PASS, "User logged in successfully","User logged in");
 				report.endTest(log);
