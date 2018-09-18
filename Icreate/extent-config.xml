@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme -->
+        <!-- standard, dark -->
+        <theme>dark</theme>
+
+        <!-- document encoding -->
+        <!-- defaults to UTF-8 -->
+        <encoding>UTF-8</encoding>
+
+        <!-- protocol for script and stylesheets -->
+        <!-- defaults to https -->
+        <protocol>https</protocol>
+
+        <!-- title of the document -->
+        <documentTitle>  Icreate Projects Automation Report </documentTitle>
+
+        <!-- report name - displayed at top-nav -->
+        <reportName>
+        <![CDATA[
+               		 <img src='https://pbs.twimg.com/profile_images/824984399733194752/-uO2aQSQ_400x400.jpg'/>
+               
+            ]]>
+  		  <!-- image src for ED controls ..... https://web.edcontrols.com/images/ed-logo.png  -->
+  		  <!-- http://www.flexwhere.nl/wp-content/themes/FlexWhere/img/logo.png -->
+	 </reportName>
+
+        <!-- report headline - displayed at top-nav, after reportHeadline -->
+        <reportHeadline> Automation Report </reportHeadline>
+		<h5>testCases</h5>
+        
+        <!-- global date format override -->
+        <!-- defaults to yyyy-MM-dd -->
+        
+        <dateFormat>yyyy-MM-dd</dateFormat>
+
+        <!-- global time format override -->
+        <!-- defaults to HH:mm:ss -->
+        <timeFormat>HH:mm:ss</timeFormat>
+
+        <!-- custom javascript -->
+        <scripts>
+
+            <![CDATA[
+                 $(document).ready(function() {
+                    setTimeout(function() {
+                        $('#enableDashboard').click();
+                             }, 500);
+							});
+						html
+						{
+   							 overflow: scroll;
+						}
+            ]]>
+
+        </scripts>
+
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+            ]]>
+            .sample{
+            width: 25%;
+            float: left;
+            text-align: center;
+            }
+            .md-display-4 {
+            word-wrap: break-word;
+            }
+
+            th:nth-child(3), td:nth-child(3) {
+            max-width: 250px !important;
+            min-width: 200px !important;
+            }
+
+            #testrunner-logs-view > .col > .card-panel {
+            height: 100%;
+            overflow: scroll;
+            text-align: center;
+            }
+            body:not(.default) {
+            overflow: scroll !important;
+            }
+            <!--border colours-->
+          
+            .report-name { 
+            padding-left: 10px;
+             } 
+             .report-name > img { 
+             float: left;height: 40px;margin-left: 55px;margin-top: 2px;width: auto; 
+             }
+           	.report-headline{
+           	position:absolute;top:0px;padding-left:20px;
+           	}
+
+			
+
+        </styles>
+    </configuration>
+</extentreports>
+
+
+
+
+

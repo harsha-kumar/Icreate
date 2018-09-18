@@ -1,0 +1,19 @@
+apply plugin: 'application'
+sourceSets.main.java.srcDirs = ['src']
+mainClassName = 'icreateDemo.DemoIcreate'
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+dependencies{
+		
+compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
+// https://mvnrepository.com/artifact/com.relevantcodes/extentreports
+compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
+
+
+		
+    
+}
+
+
