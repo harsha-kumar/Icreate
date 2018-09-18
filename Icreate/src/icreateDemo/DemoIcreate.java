@@ -25,9 +25,9 @@ public class DemoIcreate {
 				System.out.println("------------WELCOME TO Icreate FRAMEWORK -------");
 				System.out.println("*******************************************************");
 				System.out.println("------------------Its a MAIN Class---------------------");
-				report=new ExtentReports(path+"\\icreate.html", true, NetworkMode.ONLINE);
-				report.loadConfig(new File(path+"\\extent-config.xml"));
-				System.setProperty("webdriver.chrome.driver", path+"\\chromedriver.exe");
+				report=new ExtentReports("\\var\\lib\\jenkins\\workspace\\DemoICreate\\Icreate\\icreate.html", true, NetworkMode.ONLINE);
+				report.loadConfig(new File("\\var\\lib\\jenkins\\workspace\\DemoICreate\\Icreate\\extent-config.xml"));
+				System.setProperty("webdriver.chrome.driver","\\var\\lib\\jenkins\\workspace\\DemoICreate\\Icreate\\chromedriver");
 				driver=new ChromeDriver();
 				System.out.println("Chrome is Selected");	
 				driver.manage().window().maximize();
